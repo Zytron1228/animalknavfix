@@ -1,0 +1,6 @@
+framework module Pods_animalkingdommTests {
+  umbrella header "Pods-animalkingdommTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
