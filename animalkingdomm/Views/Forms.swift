@@ -5,7 +5,7 @@
 //  Created by PMStudent on 11/23/21.
 //
 
-import SwiftUI //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAÆAAAAAAAAAAAAAAAAAAAAAAA
+import SwiftUI //AAA AAAAAAAAAAAA AAAAAAAAA AA AAAÆAAA AAAAA THE AAAAAA AAAAAAAAA AAAA
 
 struct Forms: View {
     let color1 = Color.blue
@@ -16,7 +16,7 @@ struct Forms: View {
             VStack {
                 Spacer()
                 Button(action: {
-                    show = "Lost"
+                    show = "Lost" //brings you to the lost pet form
                 }) {
                     Text("I Have Lost A Pet")
                         .font(.title)
@@ -26,7 +26,7 @@ struct Forms: View {
                 }
                 Spacer()
                 Button(action: {
-                    show = "Found"
+                    show = "Found" //brings you to the found pet form
                 }) {
                     Text("I have Found A Pet")
                         .font(.title)

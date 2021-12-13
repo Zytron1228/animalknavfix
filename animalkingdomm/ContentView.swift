@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isWalktrhoughViewShowing = true
+    @State public var isWalktrhoughViewShowing = true
     @EnvironmentObject var viewModel: AppViewModel
-
+//    @Binding public var show: String
     var body: some View {
         
         
        
             Group {
-                if isWalktrhoughViewShowing {
-                   WalkthroughView(isWalktrhoughViewShowing:
-                                    $isWalktrhoughViewShowing)
-                } else {
-    FirstQuestionContentView()
+                ZStack {
+//                if isWalktrhoughViewShowing == true {
+//                   WalkthroughView(isWalktrhoughViewShowing:
+//                                    $isWalktrhoughViewShowing)
+//
+//                } else {
+                    Main(isWalktrhoughViewShowing: $isWalktrhoughViewShowing)
                     
+//                }
                 }
             }}
         }
@@ -30,8 +33,8 @@ struct ContentView: View {
     
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInView()
+//    }
+//}

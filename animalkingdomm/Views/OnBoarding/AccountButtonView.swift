@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct AccountButtonView: View {
-    @Binding var iswalktrhoughVieShowing: Bool
+    @Binding var iswalktrhoughViewShowing: Bool
+    @Binding public var show: String
     
     var body: some View {
-        Button(action: { dismiss() }, label: {
+        Button(action: {
+            show = "FirstQuestion"
+            dismiss() }, label: {
             Text("Sign Up")
                 .foregroundColor(.white)
                 .underline()
@@ -20,13 +23,13 @@ struct AccountButtonView: View {
     
     func dismiss() {
         withAnimation {
-            iswalktrhoughVieShowing.toggle()
+            iswalktrhoughViewShowing.toggle()
         }
     }
 }
 
-struct AccountButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountButtonView(iswalktrhoughVieShowing: Binding.constant(true))
-    }
-}
+//struct AccountButtonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountButtonView(iswalktrhoughViewShowing: Binding.constant(true), show: $show)
+//    }
+//}

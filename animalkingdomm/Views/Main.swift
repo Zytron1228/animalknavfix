@@ -7,10 +7,12 @@
 
 import SwiftUI
 struct Main: View {
-    @State public var show = "Home"
-    @State var showing = Home()
+    @State public var show = "Walkthrough" // this is the view being displayed
+//    @State var showing = WalkthroughView(isWalktrhoughViewShowing: $isWalktrhoughViewShowing) // this was the view being displayed
     @State var MenuOpen = false
     @State var menuVisable = 0.0
+    @Binding public var isWalktrhoughViewShowing: Bool
+//    init ()
     var body: some View {
         ZStack {
             ZStack(alignment: .topLeading) {
@@ -28,8 +30,8 @@ struct Main: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
                         Spacer()
-                        Group {
-                            Button(action: {
+                        Group { // this is the side menu
+                            Button(action: { // these are side menu buttons
                                 show = "Home"
                             }) {
                                 HStack {
@@ -37,6 +39,7 @@ struct Main: View {
                                         Image(systemName: "house.fill")
                                             .foregroundColor(.white)
                                             .offset(x: -5)
+                                        
                                         Text("Home")
                                             .foregroundColor(.white)
                                             .padding(1.0)
@@ -45,6 +48,7 @@ struct Main: View {
                                     else {
                                         Image(systemName: "house.fill")
                                             .offset(x: -2)
+                                        
                                         Text("Home")
                                             .padding(1.0)
                                             .offset(x: -3)
@@ -62,6 +66,7 @@ struct Main: View {
                                         Image(systemName: "person.crop.circle")
                                             .foregroundColor(.white)
                                             .offset(x: -3)
+                                        
                                         Text("Profile")
                                             .foregroundColor(.white)
                                             .padding(1.0)
@@ -69,6 +74,7 @@ struct Main: View {
                                     }
                                     else {
                                         Image(systemName: "person.crop.circle")
+                                        
                                         Text("Profile")
                                             .padding(1.0)
                                     }
@@ -84,6 +90,7 @@ struct Main: View {
                                         Image(systemName: "list.bullet.rectangle.portrait.fill")
                                             .foregroundColor(.white)
                                             .offset(x: -3)
+                                        
                                         Text("Submit a Form")
                                             .foregroundColor(.white)
                                             .padding(1.0)
@@ -94,6 +101,7 @@ struct Main: View {
                                         Image(systemName: "list.bullet.rectangle.portrait.fill")
                                             .foregroundColor(.white)
                                             .offset(x: -2)
+                                        
                                         Text("Submitting Lost Form")
                                             .foregroundColor(.white)
                                             .padding(1.0)
@@ -104,6 +112,7 @@ struct Main: View {
                                         Image(systemName: "list.bullet.rectangle.portrait.fill")
                                             .foregroundColor(.white)
                                             .offset(x: -2)
+                                        
                                         Text("Submitting Found Form")
                                             .foregroundColor(.white)
                                             .padding(1.0)
@@ -112,6 +121,7 @@ struct Main: View {
                                     
                                     else {
                                         Image(systemName: "list.bullet.rectangle.portrait.fill")
+                                        
                                         Text("Submit a Form")
                                             .padding(1.0)
                                     }
@@ -126,6 +136,7 @@ struct Main: View {
                                         Image(systemName: "magnifyingglass")
                                             .foregroundColor(.white)
                                             .offset(x: -3)
+                                        
                                         Text("Search Pets")
                                             .foregroundColor(.white)
                                             .padding(1.0)
@@ -133,6 +144,7 @@ struct Main: View {
                                     }
                                     else {
                                         Image(systemName: "magnifyingglass")
+                                        
                                         Text("Search Pets")
                                             .padding(1.0)
                                     }
@@ -148,6 +160,7 @@ struct Main: View {
                                         Image(systemName: "gearshape.fill")
                                             .foregroundColor(.white)
                                             .offset(x: -3)
+                                        
                                         Text("Settings")
                                             .foregroundColor(.white)
                                             .offset(x: -3)
@@ -155,13 +168,13 @@ struct Main: View {
                                     }
                                     else {
                                         Image(systemName: "gearshape.fill")
+                                        
                                         Text("Settings")
                                             .padding(1.0)
                                         
                                     }
                                 }
                             }
-                            
                             
                             Button(action: {
                                 show = "Help/Info"
@@ -183,7 +196,6 @@ struct Main: View {
                                     }
                                 }
                             }
-                            
                         }
                         .foregroundColor(Color(hue: 1.0, saturation: 0.0, brightness: 0.434))
                         .padding(10)
@@ -205,7 +217,22 @@ struct Main: View {
                         .ignoresSafeArea()
                         .background(Color.blue)
                         .ignoresSafeArea()
-                    
+                }
+                
+                else if show == "Walkthrough" {
+                    WalkthroughView(isWalktrhoughViewShowing: $isWalktrhoughViewShowing, show: $show)
+                        .frame(width: 428, height: 926)
+                        .ignoresSafeArea()
+                        .background(Color.blue)
+                        .ignoresSafeArea()
+                }
+                
+                else if show == "FirstQuestion" {
+                    FirstQuestionContentView(show: $show)
+                        .frame(width: 428, height: 926)
+                        .ignoresSafeArea()
+                        .background(Color.blue)
+                        .ignoresSafeArea()
                 }
                 
                 else if show == "Profile" {
@@ -266,6 +293,30 @@ struct Main: View {
                         .ignoresSafeArea()
                 }
                 
+                else if show == "SignUpView" {
+                    SignUpView(show: $show)
+                        .frame(width: 428, height: 926)
+                        .ignoresSafeArea()
+                        .background(Color.blue)
+                        .ignoresSafeArea()
+                }
+                
+                else if show == "Second" {
+                    SecondViews(show: $show)
+                        .frame(width: 428, height: 926)
+                        .ignoresSafeArea()
+                        .background(Color.blue)
+                        .ignoresSafeArea()
+                }
+                
+                else if show == "Third" {
+                    ThirdViews()
+                        .frame(width: 428, height: 926)
+                        .ignoresSafeArea()
+                        .background(Color.blue)
+                        .ignoresSafeArea()
+                }
+                
                 else {
                     PageNotFound()
                         .frame(width: 428, height: 926)
@@ -279,21 +330,104 @@ struct Main: View {
                 }
                 
                 VStack {
-                    Button(action: {
-                        print("Open Menu")
-                        MenuOpen.toggle()
-                    }){
-                        Image(systemName: "line.3.horizontal")
-                            .resizable()
-                            .foregroundColor(Color.black)
+                    HStack {
+                        
+                        if show == "Walkthrough" {
+                            
+
+                        }
+                        else if show == "FirstQuestion" {
+                            
+                            
+                            
+                            }
+                        else {
+                            Button(action: {
+                                print("Open Menu")
+                                MenuOpen.toggle()
+                            }){
+                                Image(systemName: "line.3.horizontal")
+                                    .resizable()
+                                    .foregroundColor(Color.black)
+                            }
+                            .frame(width: 25, height: 15)
+                            .padding()
+                            .offset(x: -175, y: 69)
+                        }
+                        if show == "SignUpView" {
+//                            Spacer()
+                            
+                            Button(action: {
+                                show = "Second"
+                            }) {
+                                Text("< Back")
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                        }
+//                        else if show == "the other views" {
+//                          //  Spacer()
+//
+//                            Button(action: {
+//                                // go back somehow
+//                            }) {
+//                                Text("< Back")
+//                                    .foregroundColor(.black)
+//                            }
+//                        Spacer()
+//                        }
+                        
+                        else if show == "Third" {
+//                            Spacer()
+                            
+                            Button(action: {
+                                show = "FirstQuestion"
+                            }) {
+                                Text("< Back")
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                        }
+                        
+                        else if show == "Second" {
+//                            Spacer()
+                            
+                            Button(action: {
+                                show = "FirstQuestion"
+                            }) {
+                                Text("< Back")
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                        }
+                        
+                        else if show == "SignUpAccount" {
+//                            Spacer()
+                            
+                            Button(action: {
+                                // go back somehow
+                            }) {
+                                Text("< Back")
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                        }
+                        
+                        else if show == "SignInView" {
+//                            Spacer()
+                            
+                            Button(action: {
+                                // go back somehow
+                            }) {
+                                Text("< Back")
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                        }
                     }
-                    .frame(width: 25, height: 15)
-                    .padding()
-                    .offset(x: -175, y: 69)
-                    
                     Spacer()
                     //anything you put in this VStack shows up everywhere loaded by Main.swift except the side menu.
-//                     Text("this shows up everywhere. Weird...") //uncomment this out for example.
+                    //         Text("this shows up everywhere. Weird...") //uncomment this out for example.
                     Spacer()
                 }
                 .padding()
@@ -313,8 +447,8 @@ struct Main: View {
     }
 }
 
-struct Main_Previews: PreviewProvider {
-    static var previews: some View {
-        Main()
-    }
-}
+//struct Main_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Main(isWalktrhoughViewShowing: $isWalktrhoughViewShowing)
+//    }
+//}

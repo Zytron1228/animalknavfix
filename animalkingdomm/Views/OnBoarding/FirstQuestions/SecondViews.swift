@@ -12,6 +12,7 @@ struct SecondViews: View {
     @State var buttonState = false
     @State var SecondViews = false
     @State var SignUpView = false
+    @Binding public var show: String
     
     let skyBlue = Color("skyBlue")
     let darkBlue = Color("darkBlue")
@@ -31,7 +32,7 @@ struct SecondViews: View {
         ZStack {
             skyBlue.ignoresSafeArea(.all)
             
-            NavigationLink(destination: animalkingdomm.SignUpView(), isActive: $SignUpView) { EmptyView() }
+//            NavigationLink(destination: animalkingdomm.SignUpView(show: $show), isActive: $SignUpView) { EmptyView() }
             
             VStack {
                 Text("Which One?")
@@ -41,7 +42,10 @@ struct SecondViews: View {
                     .multilineTextAlignment(.center)
                     .offset(y: -130)
                 VStack {
-                    Button(action: { SignUpView = true}) {
+                    Button(action: {
+//                        SignUpView = true
+                        show = "SignUpView"
+                    }) {
                         
                         Text("Lost")
                             .foregroundColor(.white)
@@ -52,7 +56,10 @@ struct SecondViews: View {
                     .cornerRadius(40)
                     .padding(20)
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        show = "SignUpView"
+                        
+                    }) {
                         Text("Found")
                             .foregroundColor(.white)
                     }
@@ -68,8 +75,8 @@ struct SecondViews: View {
         }
     }
 }
-struct SecondViews_Previews: PreviewProvider {
-    static var previews: some View {
-        SecondViews()
-    }
-}
+//struct SecondViews_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SecondViews()
+//    }
+//}

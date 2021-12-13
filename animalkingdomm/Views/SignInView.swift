@@ -6,6 +6,7 @@ struct SignInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @Namespace var animation
+    @Binding public var show: String
     static let screenHeight = UIScreen.main.bounds.size.height
     var body: some View {
         
@@ -26,7 +27,9 @@ struct SignInView: View {
                         FormField(value: $password, icon: "lock", placeholder: "Password", isSecure: true,animation: animation)
                             .padding(.top, 5)
                         
-                        Button(action: {}){
+                        Button(action: {
+                            show = "FirstQuestion"
+                        }){
                             Text("Sign In").font(.title).modifier(ButtonModifiers())
                             
                         }.padding(.top).padding(.top)
@@ -35,7 +38,7 @@ struct SignInView: View {
                
                             
                             
-                                NavigationLink(destination: SignUpView()) {
+                        NavigationLink(destination: SignUpView(show: $show)) {
                                     Text("New").font(.system(size: 15))
                                         .opacity(1)
                                         .foregroundColor(.white)
@@ -56,9 +59,9 @@ struct SignInView: View {
     
 }
 
-struct SignInView_Previews: PreviewProvider {
-  static var previews: some View {
-    SignInView()
-        .previewDevice("iPhone 12")
-  }
-}
+//struct SignInView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    SignInView()
+//        .previewDevice("iPhone 12")
+//  }
+//}

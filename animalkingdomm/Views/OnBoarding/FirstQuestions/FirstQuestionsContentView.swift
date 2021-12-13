@@ -11,6 +11,7 @@ struct FirstQuestionContentView: View {
 
     @State var SecondViews = false
     @State var ThirdViews = false
+    @Binding public var show: String
     
     let skyBlue = Color("skyBlue")
     let darkBlue = Color("darkBlue")
@@ -39,10 +40,13 @@ struct FirstQuestionContentView: View {
                         .multilineTextAlignment(.center)
                         .offset(y: -130)
                     
-                    NavigationLink(destination: animalkingdomm.SecondViews(), isActive: $SecondViews) { EmptyView() }
+//                    NavigationLink(destination: animalkingdomm.SecondViews(show: $show), isActive: $SecondViews) { EmptyView() }
                     
                     VStack {
-                        Button(action: { SecondViews = true }) {
+                        Button(action: {
+//                            SecondViews = true
+                            show = "Second"
+                        }) {
                             
                             Text("YES")
                                 .foregroundColor(.white)
@@ -54,7 +58,10 @@ struct FirstQuestionContentView: View {
                         .padding(20)
                         
                         
-                        Button(action: {ThirdViews = true }) {
+                        Button(action: {
+//                            ThirdViews = true
+                            show = "Third"
+                        }) {
                             Text("NO")
                                 .foregroundColor(.white)
                         }

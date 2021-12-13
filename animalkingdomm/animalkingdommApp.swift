@@ -8,7 +8,12 @@
 import SwiftUI
 @main
 struct animalkingdommApp: App {
+    
+//    @Binding public var show = "Walkthrough"
+
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             let viewModel = AppViewModel()

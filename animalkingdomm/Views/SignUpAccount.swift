@@ -16,7 +16,7 @@ class AppViewModel: ObservableObject {
 struct SignUpView: View {
     @State var buttonState = false
     @State var PetinfoView = false
-    
+    @Binding public var show: String
     @State var email: String = ""
     @State var password: String = ""
     @State private var username: String = ""
@@ -37,7 +37,12 @@ struct SignUpView: View {
     var body: some View {
         
             ZStack {
-                NavigationLink(destination: animalkingdomm.Main().navigationBarBackButtonHidden(true), isActive: $PetinfoView) { EmptyView() }
+//                NavigationLink(destination: animalkingdomm.Main().navigationBarBackButtonHidden(true), isActive: $PetinfoView) { EmptyView() }
+//                Button(action: {
+//                    show = "Forms"
+//                }) {
+//                    EmptyView()
+//                }
                 Color.blue.edgesIgnoringSafeArea(.all)
                 VStack {
                     VStack(spacing: 20) {
@@ -98,9 +103,9 @@ struct SignUpView: View {
                         
                         
                         Button(action: {
-                            PetinfoView = true                            }
-                            
-                            
+//                            PetinfoView = true
+                            show = "Forms"
+                        }
                             
                             
                             
@@ -135,8 +140,8 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView()
-    }
-}
+//struct SignUpView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUpView(show: $show)
+//    }
+//}
